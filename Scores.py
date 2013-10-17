@@ -1,6 +1,3 @@
-## Kenneth Andersson
-## Multimediaprogrammering i Python (DSV)
-
 import os, pygame, shelve, time
 from Message import *
 

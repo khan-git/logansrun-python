@@ -1,5 +1,3 @@
-## Kenneth Andersson
-## Multimediaprogrammering i Python (DSV)
 from LogansRun import *
 
 

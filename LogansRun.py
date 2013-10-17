@@ -1,6 +1,3 @@
-## Kenneth Andersson
-## Multimediaprogrammering i Python (DSV)
-
 import os, sys, pygame, math, cPickle, time, datetime, scriptutil, random
 from pygame.locals import *
 from Hero import *

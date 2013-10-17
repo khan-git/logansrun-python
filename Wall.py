@@ -1,6 +1,3 @@
-## Kenneth Andersson
-## Multimediaprogrammering i Python (DSV)
-
 import pygame
 
 class Wall(pygame.sprite.Sprite):
