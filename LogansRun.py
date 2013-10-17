@@ -646,8 +646,15 @@ class Music(object):
         musicF = scriptutil.ffind('./audio', ('music*.mp3',));
         for mus in musicF:
             self.music[mus] = False;
+        if len(self.music) == 0:
+            print "No music found. Music disabled!";
+            self.disabled = True;
+        else:
+            self.disabled = False;
         
     def playMusic(self, music=None):
+        if self.disabled:
+            return;
         if(music == None):
             while(True):
                 music = self.music.keys();
@@ -669,6 +676,8 @@ class Music(object):
             sys.exit();
 
     def resetPlayed(self):
+        if self.disabled:
+            return;
         for mus in self.music:
             self.music[mus] = False;
     
