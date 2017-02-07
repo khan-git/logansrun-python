@@ -1,9 +1,10 @@
-import os, sys, pygame, math, cPickle, time, datetime, scriptutil, random
+import os, sys, pygame, math, cPickle, time, datetime, random
 from pygame.locals import *
 from Hero import *
 from Wall import *
 from Message import *
 from Scores import *
+import glob
 
 class LogansRun():
     """The game Logans Run."""
@@ -97,8 +98,7 @@ class LogansRun():
 
     def scoreList(self):
         """Print the scorelist of each map."""
-        maps = scriptutil.ffind('./maps', ('*.map',))
-        maps.sort();
+        maps = glob.glob('./maps/*.map')
         self.screen.fill((0,0,0));
         for map in maps:
             msgSprite = self.scores.printScores(map);
@@ -124,7 +124,7 @@ class LogansRun():
 
     def selectMap(self, prefix=''):
         """Let user select a map."""
-        maps = scriptutil.ffind('./maps', (prefix+'*.map',))
+        maps = glob.glob('./maps/*.map')
         userFil = './maps/'+self.askUserInput('Enter map name')+'.map';
 
         if(userFil in maps):
@@ -241,7 +241,7 @@ class LogansRun():
     def playLevels(self):
         """Play each level in turn."""
         self.selectLevel();
-        maps = scriptutil.ffind('./maps', ('Level*.map',))
+        maps = glob.glob('./maps/Level*.map')
         maps.sort();
         for map in maps:
             self.map = map;
@@ -256,7 +256,7 @@ class LogansRun():
         
     def playSingleMap(self):
         """Play just a single map selected from a list."""
-        maps = scriptutil.ffind('./maps', ('*.map',));
+        maps = glob.glob('./maps/*.map')
         maps.sort();
         i = 0;
 
@@ -640,7 +640,7 @@ class Music(object):
     """ Plays selected audio files or picks a random file named music*.mp3."""
     def __init__(self):
         self.music = {};
-        musicF = scriptutil.ffind('./audio', ('music*.mp3',));
+        musicF = glob.glob('./audio/music*.mp3')
         for mus in musicF:
             self.music[mus] = False;
         if len(self.music) == 0:
